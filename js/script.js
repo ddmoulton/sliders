@@ -6,7 +6,7 @@ function splashResize() {
 function sectionResize() {
     var windowSize = $(window).height();
     console.log(windowSize);
-    $('section').css("height", windowSize); 
+    $('.boxes div').css("height", windowSize * .4); 
 }
 $(document).ready(function() {
     splashResize();
