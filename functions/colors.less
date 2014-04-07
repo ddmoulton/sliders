@@ -1,0 +1,233 @@
+//main: ../variables.less
+
+//////////////////////
+// Grey Definitions //
+//////////////////////
+@light-grey-range: @lightest-light-grey - @darkest-light-grey;
+@dark-grey-range: @darkest-dark-grey - @lightest-dark-grey;
+@light-grey0-color: @lightest-light-grey - (@light-grey-range * .95);
+@light-grey1-color: @lightest-light-grey - (@light-grey-range * .85);
+@light-grey2-color: @lightest-light-grey - (@light-grey-range * .75);
+@light-grey3-color: @lightest-light-grey - (@light-grey-range * .65);
+@light-grey4-color: @lightest-light-grey - (@light-grey-range * .55);
+@light-grey5-color: @lightest-light-grey - (@light-grey-range * .45);
+@light-grey6-color: @lightest-light-grey - (@light-grey-range * .35);
+@light-grey7-color: @lightest-light-grey - (@light-grey-range * .25);
+@light-grey8-color: @lightest-light-grey - (@light-grey-range * .15);
+@light-grey9-color: @lightest-light-grey - (@light-grey-range * .05);
+@dark-grey0-color: @darkest-dark-grey - (@dark-grey-range * .95);
+@dark-grey1-color: @darkest-dark-grey - (@dark-grey-range * .85);
+@dark-grey2-color: @darkest-dark-grey - (@dark-grey-range * .75);
+@dark-grey3-color: @darkest-dark-grey - (@dark-grey-range * .65);
+@dark-grey4-color: @darkest-dark-grey - (@dark-grey-range * .55);
+@dark-grey5-color: @darkest-dark-grey - (@dark-grey-range * .45);
+@dark-grey6-color: @darkest-dark-grey - (@dark-grey-range * .35);
+@dark-grey7-color: @darkest-dark-grey - (@dark-grey-range * .25);
+@dark-grey8-color: @darkest-dark-grey - (@dark-grey-range * .15);
+@dark-grey9-color: @darkest-dark-grey - (@dark-grey-range * .05);
+@light-grey0: rgba(@light-grey0-color,@light-grey0-color,@light-grey0-color,1);
+@light-grey1: rgba(@light-grey1-color,@light-grey1-color,@light-grey1-color,1);
+@light-grey2: rgba(@light-grey2-color,@light-grey2-color,@light-grey2-color,1);
+@light-grey3: rgba(@light-grey3-color,@light-grey3-color,@light-grey3-color,1);
+@light-grey4: rgba(@light-grey4-color,@light-grey4-color,@light-grey4-color,1);
+@light-grey5: rgba(@light-grey5-color,@light-grey5-color,@light-grey5-color,1);
+@light-grey6: rgba(@light-grey6-color,@light-grey6-color,@light-grey6-color,1);
+@light-grey7: rgba(@light-grey7-color,@light-grey7-color,@light-grey7-color,1);
+@light-grey8: rgba(@light-grey8-color,@light-grey8-color,@light-grey8-color,1);
+@light-grey9: rgba(@light-grey9-color,@light-grey9-color,@light-grey9-color,1);
+@dark-grey0: rgba(@dark-grey0-color,@dark-grey0-color,@dark-grey0-color,1);
+@dark-grey1: rgba(@dark-grey1-color,@dark-grey1-color,@dark-grey1-color,1);
+@dark-grey2: rgba(@dark-grey2-color,@dark-grey2-color,@dark-grey2-color,1);
+@dark-grey3: rgba(@dark-grey3-color,@dark-grey3-color,@dark-grey3-color,1);
+@dark-grey4: rgba(@dark-grey4-color,@dark-grey4-color,@dark-grey4-color,1);
+@dark-grey5: rgba(@dark-grey5-color,@dark-grey5-color,@dark-grey5-color,1);
+@dark-grey6: rgba(@dark-grey6-color,@dark-grey6-color,@dark-grey6-color,1);
+@dark-grey7: rgba(@dark-grey7-color,@dark-grey7-color,@dark-grey7-color,1);
+@dark-grey8: rgba(@dark-grey8-color,@dark-grey8-color,@dark-grey8-color,1);
+@dark-grey9: rgba(@dark-grey9-color,@dark-grey9-color,@dark-grey9-color,1);
+//////////////////////
+// Red Definintions //
+//////////////////////
+@true-light-red-min: @light-red-min / 2;
+@light-red-max: 100% - (@true-light-red-min * 2) - 1%;
+@true-light-red-max: @light-red-max /2;
+@light-red-min-color: lighten(@red, @true-light-red-min);
+@true-dark-red-max: @dark-red-max / 5;
+@dark-red-min: 100% - (@true-dark-red-max * 2) - 1%;
+@true-dark-red-min: @dark-red-min /2;
+@dark-red-max-color: darken(@red, @true-dark-red-max);
+@light-red0: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 1));
+@light-red1: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 2));
+@light-red2: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 3));
+@light-red3: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 4));
+@light-red4: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 5));
+@light-red5: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 6));
+@light-red6: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 7));
+@light-red7: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 8));
+@light-red8: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 9));
+@light-red9: lighten(@light-red-min-color, (@true-light-red-max / @light-reds-available * 10));
+@dark-red0: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 1));
+@dark-red1: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 2));
+@dark-red2: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 3));
+@dark-red3: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 4));
+@dark-red4: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 5));
+@dark-red5: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 6));
+@dark-red6: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 7));
+@dark-red7: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 8));
+@dark-red8: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 9));
+@dark-red9: darken(@dark-red-max-color, (@true-dark-red-max / @dark-reds-available * 10));
+//////////////////////
+// Green Definitions//
+//////////////////////
+@true-light-green-min: @light-green-min / 2;
+@light-green-max: 100% - (@true-light-green-min * 2) - 1%;
+@true-light-green-max: @light-green-max /2;
+@light-green-min-color: lighten(@green, @true-light-green-min);
+@true-dark-green-max: @dark-green-max / 5;
+@dark-green-min: 100% - (@true-dark-green-max * 2) - 1%;
+@true-dark-green-min: @dark-green-min /2;
+@dark-green-max-color: darken(@green, @true-dark-green-max);
+@light-green0: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 1));
+@light-green1: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 2));
+@light-green2: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 3));
+@light-green3: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 4));
+@light-green4: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 5));
+@light-green5: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 6));
+@light-green6: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 7));
+@light-green7: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 8));
+@light-green8: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 9));
+@light-green9: lighten(@light-green-min-color, (@true-light-green-max / @light-greens-available * 10));
+@dark-green0: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 1));
+@dark-green1: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 2));
+@dark-green2: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 3));
+@dark-green3: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 4));
+@dark-green4: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 5));
+@dark-green5: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 6));
+@dark-green6: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 7));
+@dark-green7: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 8));
+@dark-green8: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 9));
+@dark-green9: darken(@dark-green-max-color, (@true-dark-green-max / @dark-greens-available * 10));
+//////////////////////
+// Blue Definitions //
+//////////////////////
+@true-light-blue-min: @light-blue-min / 2;
+@light-blue-max: 100% - (@true-light-blue-min * 2) - 1%;
+@true-light-blue-max: @light-blue-max /2;
+@light-blue-min-color: lighten(@blue, @true-light-blue-min);
+@true-dark-blue-max: @dark-blue-max / 5;
+@dark-blue-min: 100% - (@true-dark-blue-max * 2) - 1%;
+@true-dark-blue-min: @dark-blue-min /2;
+@dark-blue-max-color: darken(@blue, @true-dark-blue-max);
+@light-blue0: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 1));
+@light-blue1: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 2));
+@light-blue2: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 3));
+@light-blue3: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 4));
+@light-blue4: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 5));
+@light-blue5: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 6));
+@light-blue6: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 7));
+@light-blue7: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 8));
+@light-blue8: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 9));
+@light-blue9: lighten(@light-blue-min-color, (@true-light-blue-max / @light-blues-available * 10));
+@dark-blue0: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 1));
+@dark-blue1: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 2));
+@dark-blue2: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 3));
+@dark-blue3: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 4));
+@dark-blue4: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 5));
+@dark-blue5: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 6));
+@dark-blue6: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 7));
+@dark-blue7: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 8));
+@dark-blue8: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 9));
+@dark-blue9: darken(@dark-blue-max-color, (@true-dark-blue-max / @dark-blues-available * 10));
+////////////////////////
+// Yellow Definitions //
+////////////////////////
+@true-light-yellow-min: @light-yellow-min / 2;
+@light-yellow-max: 100% - (@true-light-yellow-min * 2) - 1%;
+@true-light-yellow-max: @light-yellow-max /2;
+@light-yellow-min-color: lighten(@yellow, @true-light-yellow-min);
+@true-dark-yellow-max: @dark-yellow-max / 5;
+@dark-yellow-min: 100% - (@true-dark-yellow-max * 2) - 1%;
+@true-dark-yellow-min: @dark-yellow-min /2;
+@dark-yellow-max-color: darken(@yellow, @true-dark-yellow-max);
+@light-yellow0: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 1));
+@light-yellow1: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 2));
+@light-yellow2: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 3));
+@light-yellow3: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 4));
+@light-yellow4: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 5));
+@light-yellow5: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 6));
+@light-yellow6: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 7));
+@light-yellow7: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 8));
+@light-yellow8: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 9));
+@light-yellow9: lighten(@light-yellow-min-color, (@true-light-yellow-max / @light-yellows-available * 10));
+@dark-yellow0: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 1));
+@dark-yellow1: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 2));
+@dark-yellow2: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 3));
+@dark-yellow3: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 4));
+@dark-yellow4: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 5));
+@dark-yellow5: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 6));
+@dark-yellow6: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 7));
+@dark-yellow7: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 8));
+@dark-yellow8: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 9));
+@dark-yellow9: darken(@dark-yellow-max-color, (@true-dark-yellow-max / @dark-yellows-available * 10));
+////////////////////////
+// Cyan Definitions //
+////////////////////////
+@true-light-cyan-min: @light-cyan-min / 2;
+@light-cyan-max: 100% - (@true-light-cyan-min * 2) - 1%;
+@true-light-cyan-max: @light-cyan-max /2;
+@light-cyan-min-color: lighten(@cyan, @true-light-cyan-min);
+@true-dark-cyan-max: @dark-cyan-max / 5;
+@dark-cyan-min: 100% - (@true-dark-cyan-max * 2) - 1%;
+@true-dark-cyan-min: @dark-cyan-min /2;
+@dark-cyan-max-color: darken(@cyan, @true-dark-cyan-max);
+@light-cyan0: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 1));
+@light-cyan1: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 2));
+@light-cyan2: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 3));
+@light-cyan3: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 4));
+@light-cyan4: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 5));
+@light-cyan5: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 6));
+@light-cyan6: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 7));
+@light-cyan7: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 8));
+@light-cyan8: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 9));
+@light-cyan9: lighten(@light-cyan-min-color, (@true-light-cyan-max / @light-cyans-available * 10));
+@dark-cyan0: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 1));
+@dark-cyan1: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 2));
+@dark-cyan2: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 3));
+@dark-cyan3: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 4));
+@dark-cyan4: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 5));
+@dark-cyan5: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 6));
+@dark-cyan6: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 7));
+@dark-cyan7: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 8));
+@dark-cyan8: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 9));
+@dark-cyan9: darken(@dark-cyan-max-color, (@true-dark-cyan-max / @dark-cyans-available * 10));
+////////////////////////
+// Magenta Definitions //
+////////////////////////
+@true-light-magenta-min: @light-magenta-min / 2;
+@light-magenta-max: 100% - (@true-light-magenta-min * 2) - 1%;
+@true-light-magenta-max: @light-magenta-max /2;
+@light-magenta-min-color: lighten(@magenta, @true-light-magenta-min);
+@true-dark-magenta-max: @dark-magenta-max / 5;
+@dark-magenta-min: 100% - (@true-dark-magenta-max * 2) - 1%;
+@true-dark-magenta-min: @dark-magenta-min /2;
+@dark-magenta-max-color: darken(@magenta, @true-dark-magenta-max);
+@light-magenta0: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 1));
+@light-magenta1: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 2));
+@light-magenta2: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 3));
+@light-magenta3: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 4));
+@light-magenta4: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 5));
+@light-magenta5: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 6));
+@light-magenta6: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 7));
+@light-magenta7: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 8));
+@light-magenta8: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 9));
+@light-magenta9: lighten(@light-magenta-min-color, (@true-light-magenta-max / @light-magentas-available * 10));
+@dark-magenta0: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 1));
+@dark-magenta1: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 2));
+@dark-magenta2: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 3));
+@dark-magenta3: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 4));
+@dark-magenta4: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 5));
+@dark-magenta5: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 6));
+@dark-magenta6: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 7));
+@dark-magenta7: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 8));
+@dark-magenta8: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 9));
+@dark-magenta9: darken(@dark-magenta-max-color, (@true-dark-magenta-max / @dark-magentas-available * 10));

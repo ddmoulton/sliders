@@ -1,0 +1,13 @@
+//main: ../mixins.less
+@import "horizontal-gradient-three.less";
+
+.gradient-border(@border-gradient-middle, @original, @fader) {
+   &:after {
+        content: "";
+        height: 1px;
+        .horizontal-gradient-three(@border-gradient-middle, @original, @fader);
+        display: block;
+        margin-bottom: 10px;
+        margin-top: 10px;
+   }
+}

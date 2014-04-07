@@ -1,0 +1,12 @@
+//main: ../mixins.less
+.horizontal-gradient-three(@border-gradient-middle, @original, @fader){ 
+
+        background: -moz-linear-gradient(left,  @original, @fader, @border-gradient-middle 50%, @original (100% - @fader));
+        background: -webkit-gradient(linear, left top, right top, color-stop(@fader,@original), color-stop(50%,@border-gradient-middle), color-stop((100% - @fader),@original));
+        background: -webkit-linear-gradient(left,  @original @fader,@border-gradient-middle 50%,@original (100% - @fader));
+        background: -o-linear-gradient(left,  @original @fader,@border-gradient-middle 50%,@original (100% - @fader));
+        background: -ms-linear-gradient(left,  @original @fader,@border-gradient-middle 50%,@original (100% - @fader));
+        background: linear-gradient(to right,  @original @fader,@border-gradient-middle 50%,@original (100% - @fader));
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+    
+}
