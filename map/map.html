@@ -14,10 +14,34 @@
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(37, -76),
-          zoom: 10
+          zoom: 10,
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.DEFAULT,
+            },
+            disableDoubleClickZoom: true,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            },
+            scaleControl: true,
+            scrollwheel: true,
+            streetViewControl: true,
+            draggable : true,
+            overviewMapControl: true,
+            overviewMapControlOptions: {
+                opened: true,
+        },
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+        var image = 'images/FoodTruckIcon.png';
+        var myLatLng = new google.maps.LatLng(36.990105, -76.433401);
+        var beachMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: image
+        });
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
