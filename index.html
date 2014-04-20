@@ -6,8 +6,8 @@
         <!-- Google places library -->
          
 <!--        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>-->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjyozvbgQseAoSAOmrsUF1wLfYk6lGuRk&sensor=false&libraries=places,geometry"></script>
-<!--        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>-->
+<!--        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjyozvbgQseAoSAOmrsUF1wLfYk6lGuRk&sensor=false&libraries=places,geometry"></script>-->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
       
 
     
@@ -37,17 +37,17 @@
             <div id="map" class="col-md-4">
                 <iframe style="width: 100%; height: 100%;" src="map/map.html"></iframe>
 
-                <button href="#">Get Directions</button>
+                
             </div>
             <div id="form" class="col-md-4">
                 <h3>Get Updated</h3>
                 <div id="locationField">
-                   <form action="actions/form_handler.php" method="post">
-                        <input id="name" placeholder="Your Name" type="text"></input>
-                        <input id="email" placeholder="Your Email Addresss" type="text"></input>
-                        <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
-                        <input id="autocomplete2" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
-                        <button id="submit" class="btn btn-default">Submit</button>
+                   <form id="addressForm">
+                        <input name="name" id="name" placeholder="Your Name" type="text"></input>
+                        <input name="email" id="email" placeholder="Your Email Addresss" type="text"></input>
+                        <input name="address" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+                        Within?
+                        <input type="submit" value="submit">
                     </form>
                     
                 </div>
@@ -57,6 +57,20 @@
              
             </div>
         </section>
+        <script> 
+            $("#addressForm").submit(function(event) {
+             
+                event.preventDefault();
+                
+                var $form = $(this);
+                console.log($form);
+                var name = $form.find("input[name='name']").val();
+                console.log(name);
+                var email = $form.find("input[name='email']").val();    
+                var address = $form.find("input[name='address']").val();  
+                $.post('actions/form_handler.php', {name: name, email: email, address: address});
+            });
+    </script>
         <script src="js/script.js"></script>
   <script src='js/maps.js'></script>
     </body>
