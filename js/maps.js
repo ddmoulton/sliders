@@ -14,7 +14,8 @@ var componentForm = {
 function initialize() {
   // Create the autocomplete object, restricting the search
   // to geographical location types.
-  autocomplete = new google.maps.places.Autocomplete(
+
+    autocomplete = new google.maps.places.Autocomplete(
       /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
       { types: ['geocode'] });
   // When the user selects an address from the dropdown,
@@ -31,6 +32,9 @@ function initialize() {
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     
   });
+    
+   
+
 
     
 }
