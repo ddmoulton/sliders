@@ -46,7 +46,13 @@
                         <input name="name" id="name" placeholder="Your Name" type="text"></input>
                         <input name="email" id="email" placeholder="Your Email Addresss" type="text"></input>
                         <input name="address" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
-                        Within?
+                        Within<select name="within">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select> Miles
                         <input type="submit" value="submit">
                     </form>
                     
@@ -57,19 +63,22 @@
              
             </div>
         </section>
-        <script> 
+          <script> 
             $("#addressForm").submit(function(event) {
              
                 event.preventDefault();
                 
                 var $form = $(this);
-                console.log($form);
                 var name = $form.find("input[name='name']").val();
-                console.log(name);
                 var email = $form.find("input[name='email']").val();    
                 var address = $form.find("input[name='address']").val();  
-                $.post('actions/form_handler.php', {name: name, email: email, address: address});
-            });
+                $.post('actions/form_handler.php', {name: name, email: email, address: address}, function() {
+                       
+                }).done(function() {
+                    console.log("Done");
+                }).fail(function() {
+                    console.log("fail");
+                }) });
     </script>
         <script src="js/script.js"></script>
   <script src='js/maps.js'></script>

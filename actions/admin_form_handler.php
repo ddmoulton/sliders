@@ -31,17 +31,17 @@ else {
      
         $userLat = floatval($row['lat']);
         $userlon = floatval($row['lon']);
+        $within = floatval($row['within']);
         $truckLat = floatval($truckLat);
         $truckLon = floatval($truckLon);
         
         $distance = distance($truckLat, $truckLon, $userLat, $userLon);
         $body = "For location".$row['address']."\nTruck Location is currently set to:".$truckLocation."\nThe distance is ".$distance." miles\n\nTruck Lat: ".$truckLat."\nTruckLon: ".$truckLon."\nUser Lat:".$userLat."\nuserLon: ".$userLon."\n".$row['lon'];
         
-        if ($distance <= 5) {
+        if ($distance <= $within) {
             mail($row['email'], "Sliders is near you today", $body);
         }
         else {
-//            mail($row['email'], "Sliders is not near you today", $body);
             
         }
         
