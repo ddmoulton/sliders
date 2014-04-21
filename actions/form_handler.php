@@ -71,18 +71,21 @@ $lon = $userLon;
 
 
 // setup the database connect
-$cxn = mysql_connect('localhost', 'root');
+$cxn = mysqli_connect('hightide', 'dmltncom_danny', 'theSqlPassword!','dmltncom_slider757addresses' );
 if (!$cxn)
     exit;
-mysql_select_db('test', $cxn);
+
 
 
 // lets setup our insert query
-$sql = "INSERT INTO test (name, email, address, lat, lon, within) VALUES ('".$name."', '".$email."', '".$addr."', '".$lat."', '".$lon."', '".$within."' )";
+$sql = "INSERT INTO addressList (name, email, address, lat, lon, within) VALUES ('".$name."', '".$email."', '".$addr."', '".$lat."', '".$lon."', '".$within."' )";
 
 // lets run our query
-echo $sql;
-$result = mysql_query($sql, $cxn);
+echo $sql; 
 
+
+
+$result = mysqli_query( $cxn, $sql);
+echo $result;
 
 ?>
