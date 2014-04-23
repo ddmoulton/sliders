@@ -24,7 +24,7 @@
                 <h1>Sliders757</h1>
                 <p>A fancy picture</p>
                 <p>And a caption</p>
-                
+    
             </div>
         </header>
        
@@ -63,15 +63,47 @@
                 event.preventDefault();
                 
                 var $form = $(this);
-                console.log($form);
                 var name = $form.find("input[name='name']").val();
-                console.log(name);
                 var email = $form.find("input[name='email']").val();    
                 var address = $form.find("input[name='address']").val();  
-                $.post('actions/form_handler.php', {name: name, email: email, address: address});
-            });
+                $.post('actions/form_handler.php', {name: name, email: email, address: address}, function() {
+                       
+                }).done(function() {
+                    console.log("Done");
+                }).fail(function() {
+                    console.log("fail");
+                }) });
     </script>
         <script src="js/script.js"></script>
   <script src='js/maps.js'></script>
+
+    <script>
+
+        
+        // tell it to wait a second 
+        $(document).on('ready', function() {
+        $.ajax({
+                url: "location.php",
+                cache: false,
+                dataType: 'html'
+            })
+             .done(function( page ) {
+//          
+            var html = $.parseHTML(page);
+                 $(html).siblings().each( function() {
+   
+                     if( $(this).hasClass('truckLocation')) {
+                         console.log($(this).text());
+                     }
+                    
+                
+                    
+                });
+                 
+                 });
+        });    
+
+    </script>
+
     </body>
 </html>

@@ -24,7 +24,7 @@ function initialize() {
     
   });
     
-    autocomplete = new google.maps.places.Autocomplete(
+    autocomplete2 = new google.maps.places.Autocomplete(
       /** @type {HTMLInputElement} */(document.getElementById('autocomplete2')),
       { types: ['geocode'] });
   // When the user selects an address from the dropdown,
