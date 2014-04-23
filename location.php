@@ -5,6 +5,7 @@
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     </head>
     <body onload="initialize()">
+<<<<<<< HEAD
 <form id="locationSetter">
         <input style="width: 100%" name="address" id="autocomplete" placeholder="Enter your address"  type="text"></input>
         <input style="width: 100%" name="address2" id="autocomplete2" placeholder="Confirm your address"  type="text"></input>
@@ -193,3 +194,30 @@ echo "<div id='time' class='time' >".$time."</div>";
         </body>
     <script src="js/maps.js"></script>
 </html>
+=======
+<form  id="locationSetter">
+        <input style="width: 100%" name="address" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+        <input style="width: 100%" name="address2" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+    <input type="submit" value="submit">
+</form>
+        </body>
+    <script src="js/maps.js"></script>
+</html>
+  <script> 
+            $("#locationSetter").submit(function(event) {
+             
+                event.preventDefault();
+                
+                var $form = $(this);
+//                var name = $form.find("input[name='name']").val();
+//                var email = $form.find("input[name='email']").val();    
+                var address = $form.find("input[name='address']").val();  
+                $.post('actions/admin_form_handler.php', {address: address}, function() {
+                       
+                }).done(function() {
+                    console.log("Done");
+                }).fail(function() {
+                    console.log("fail");
+                }) });
+    </script>
+>>>>>>> b7c3834bdf1f669516763a47a3cf7b7d2f6b8177
