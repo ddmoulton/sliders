@@ -194,7 +194,6 @@ echo "<div id='time' class='time' >".$time."</div>";
         </body>
     <script src="js/maps.js"></script>
 </html>
-=======
 <form  id="locationSetter">
         <input style="width: 100%" name="address" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
         <input style="width: 100%" name="address2" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -220,4 +219,3 @@ echo "<div id='time' class='time' >".$time."</div>";
                     console.log("fail");
                 }) });
     </script>
->>>>>>> b7c3834bdf1f669516763a47a3cf7b7d2f6b8177
