@@ -5,7 +5,121 @@
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
       #map-canvas { height: 100% }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.5);
+            z-index: 9999;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            font-family: helvetica;
+            
+            
+        }
+        .message {
+            margin-top: 25%;
+        }
     </style>
+        
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+        var truckLat;
+        var truckLon;
+        var truckMonth;
+        var truckDate;
+        var truckTime;
+        
+            new Date($.now());
+            var dt = new Date();
+        
+        
+        
+        var month = dt.getMonth() + 1;
+        var date = dt.getDate();
+        
+        // tell it to wait a second 
+        
+        $.ajax({
+                url: "../location.php",
+                cache: false,
+                dataType: 'html'
+            })
+             .done(function( page ) {
+//          
+            var html = $.parseHTML(page);
+                 $(html).siblings().each( function() {
+   
+                     if( $(this).hasClass('truckLat')) {
+                         truckLat = $(this).text();
+                     }
+                     else if ( $(this).hasClass('truckLon')) {
+                         truckLon = $(this).text();
+                     }
+                     else if ( $(this).hasClass('month')) {
+                         truckMonth = $(this).text();
+                     }
+                     else if ( $(this).hasClass('date')) {
+                         truckDate = $(this).text();
+                     }
+                     else if ( $(this).hasClass('time')) {
+                         truckTime = $(this).text();
+                     }
+                    
+                    
+                
+                    
+                });
+                 
+                 
+                 
+                     if (month === 1) {
+                    month = "January";
+                }
+                else if (month === 2) {
+                    month = "February";
+                }
+                else if (month === 3) {
+                    month = "March";
+                }
+                else if (month === 4) {
+                    month = "April";
+                }
+                else if (month === 5) {
+                    month = "May";
+                }
+                else if (month === 6) {
+                    month = "June";
+                }
+                else if (month === 7) {
+                    month = "July";
+                }
+                else if (month === 8) {
+                    month = "August";
+                }
+                else if (month === 9) {
+                    month = "September";
+                }
+                else if (month === 10) {
+                    month = "October";
+                }
+                else if (month === 11) {
+                    month = "November";
+                }
+                else if (month === 12) {
+                    month = "December";
+                }
+                
+                 
+                 
+                 });
+   
+
+    </script>
         
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjyozvbgQseAoSAOmrsUF1wLfYk6lGuRk&sensor=true">
@@ -13,9 +127,14 @@
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
+<<<<<<< HEAD
             center: new google.maps.LatLng(37, -76),
             mapTypeID: google.maps.MapTypeId.ROADMAP,
             zoom: 10,
+=======
+          center: new google.maps.LatLng(truckLat, truckLon),
+          zoom: 10,
+>>>>>>> 98da0f127bfc53fd150bab6e4a4ffc729537a1fa
             zoomControl: true,
             zoomControlOptions: {
                 style: google.maps.ZoomControlStyle.DEFAULT,
@@ -33,16 +152,27 @@
             overviewMapControlOptions: {
                 opened: true,
         },
+            
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
         var image = 'images/FoodTruckIcon.png';
-        var myLatLng = new google.maps.LatLng(36.990105, -76.433401);
+        var myLatLng = new google.maps.LatLng(truckLat, truckLon);
         var beachMarker = new google.maps.Marker({
             position: myLatLng,
             map: map,
             icon: image
         });
+          
+          
+                    if (truckMonth === month && truckDate === date) {
+                        
+                    }
+                     else { 
+                        $('body').prepend('<div class=\'overlay\'><p class=\'message\'>No location for today</p></div>');
+                         
+                     }
+          
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
