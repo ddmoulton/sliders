@@ -2,16 +2,29 @@
 <html>
     <head>
         <link href="css/clientlibs.css" rel="stylesheet" media="screen"> 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>   
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Google places library -->
+         
+<!--        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>-->
+<!--        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjyozvbgQseAoSAOmrsUF1wLfYk6lGuRk&sensor=false&libraries=places,geometry"></script>-->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+      
+
+    
+        <script> 
+  
+
+        </script>
+    
     </head>
-    <body>
+    <body onload="initialize()">
         
         <header class="splash">
             <div class="col-md-12">
                 <h1>Sliders757</h1>
                 <p>A fancy picture</p>
                 <p>And a caption</p>
-                
+    
             </div>
         </header>
        
@@ -24,12 +37,79 @@
             <div id="map" class="col-md-4">
                 <iframe style="width: 100%; height: 100%;" src="map/map.html"></iframe>
 
-                <button href="#">Get Directions</button>
+                
             </div>
             <div id="form" class="col-md-4">
-                <h2>The form can go here</h2>
+                <h3>Get Updated</h3>
+                <div id="locationField">
+                   <form id="addressForm">
+                        <input name="name" id="name" placeholder="Your Name" type="text"></input>
+                        <input name="email" id="email" placeholder="Your Email Addresss" type="text"></input>
+                        <input name="address" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+                        Within<select name="within">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select> Miles
+                        <input type="submit" value="submit">
+                    </form>
+                    
+                </div>
+            <span id="latLongA"></span>
+            <span id="latLongB"></span>
+            <span id="distance"></span>
+             
             </div>
         </section>
+          <script> 
+            $("#addressForm").submit(function(event) {
+             
+                event.preventDefault();
+                
+                var $form = $(this);
+                var name = $form.find("input[name='name']").val();
+                var email = $form.find("input[name='email']").val();    
+                var address = $form.find("input[name='address']").val();  
+                $.post('actions/form_handler.php', {name: name, email: email, address: address}, function() {
+                       
+                }).done(function() {
+                    console.log("Done");
+                }).fail(function() {
+                    console.log("fail");
+                }) });
+    </script>
         <script src="js/script.js"></script>
+  <script src='js/maps.js'></script>
+
+    <script>
+
+        
+        // tell it to wait a second 
+        $(document).on('ready', function() {
+        $.ajax({
+                url: "location.php",
+                cache: false,
+                dataType: 'html'
+            })
+             .done(function( page ) {
+//          
+            var html = $.parseHTML(page);
+                 $(html).siblings().each( function() {
+   
+                     if( $(this).hasClass('truckLocation')) {
+                         console.log($(this).text());
+                     }
+                    
+                
+                    
+                });
+                 
+                 });
+        });    
+
+    </script>
+
     </body>
 </html>
