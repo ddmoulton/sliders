@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+    <head>
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.5);
+            z-index: 9999;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            font-family: helvetica;
+        }
+        .message {
+            margin-top: 25%;
+        }
+        .tooltip { 
+            position:absolute;
+            width: 145px;
+            padding: 5px;
+            border: 1px solid gray;
+            font-size: 9pt;
+            font-family: Verdana;
+            background-color: #fff;
+            color: #000;
+        }
+        #pac-input {
+            background-color: #fff;
+            padding: 0 11px 0 13px;
+            width: 400px;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            text-overflow: ellipsis;
+        }
+        #pac-input:focus {
+            border-color: #4d90fe;
+            margin-left: -1px;
+            padding-left: 14px;  /* Regular padding-left + 1. */
+            width: 401px;
+        }
+
+        .pac-container {
+            font-family: Roboto;
+        }
+
+        #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+        }
+
+        #type-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+        
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+    <script type="text/javascript">
+        
+    var geocoder = new google.maps.Geocoder();
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay;
+    var map;
+    var marker = new google.maps.Marker;
+    var markers = new Array();
+        
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(37, -76),
+            zoom: 10,
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.DEFAULT,
+            },
+            disableDoubleClickZoom: true,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                position: google.maps.ControlPosition.RIGHT_BOTTOM,
+            },
+            scaleControl: true,
+            scrollwheel: true,
+            streetViewControl: true,
+            draggable : true,
+        };
+
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+
+        var image = 'images/FoodTruckIcon.png';
+        var myLatLng = new google.maps.LatLng(36.990105, -76.433401);
+
+        // Truck address marker and info window
+        var beachMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: image,
+            title: 'Sliders Mobile position'
+        });
+        var infoWindowIcon = new google.maps.InfoWindow({
+            content: '<strong>Sliders LLC</strong><br>'+ myLatLng
+        });
+        google.maps.event.addListener(beachMarker, 'mouseover', function() {
+            infoWindowIcon.open(map, beachMarker);
+        });
+
+        // Address input for directions
+        var input = /** @type {HTMLInputElement} */(
+            document.getElementById('pac-input'));
+
+        // Add input box to top left of screen
+        var types = document.getElementById('type-selector');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+        // Enable places autocomplete
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        // Display directions
+        directionsDisplay = new google.maps.DirectionsRenderer({
+            map: map,
+            suppressMarkers: true
+        });
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById("directionsPanel")); 
+    }
+        
+    function removeMarkers(){
+        for(i=0; i<markers.length; i++){
+            markers[i].setMap(null);
+        }
+    }
+    
+    function getDir() {
+        removeMarkers(); 
+        geocoder.geocode({
+            'address': document.getElementById('pac-input').value
+        },
+
+        function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var origin = results[0].geometry.location;
+                var destination = new google.maps.LatLng(36.990105, -76.433401);
+            
+                // Starting address marker and Info Window
+                var infoWindow = new google.maps.InfoWindow({
+                    content: document.getElementById('pac-input').value
+                });
+                marker = new google.maps.Marker({
+                    position: origin,
+                    map: map,
+                });
+                markers.push(marker);
+                
+                google.maps.event.addListener(marker, 'mouseover', function() {
+                    infoWindow.open(map, marker);
+                });
+                
+                var request = {
+                    origin: origin,
+                    destination: destination,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                };
+
+                directionsService.route(request, function (response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                    }
+                });
+
+            } 
+            else {
+                document.getElementById('pac-input').value =
+                "Directions cannot be computed at this time.";
+            }
+        });
+    }
+    
+                    
+    function searchKeyPress(e) {
+        // look for window.event in case event isn't passed in
+        if (typeof e == 'undefined' && window.event) { e = window.event; }
+        if (e.keyCode == 13) {
+            getDir();
+        }
+    }
+     
+    google.maps.event.addDomListener(window, 'load', initialize);
+    
+    </script>
+        
+    </head>
+    <body onload="initialize()">
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a location to get directions" onkeypress="searchKeyPress(event)">
+        <div id="map-canvas">
+        <div id="directionsPanel"></div>
+    </body>
+</html>
