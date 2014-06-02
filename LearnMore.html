@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <style type="text/css">
+            .fancybox-nav {
+                width: 60px;       
+            }
+            .fancybox-nav span {
+                visibility: visible;
+                opacity: 0.5;
+            } 
+            .fancybox-nav:hover span {
+                opacity: 1;
+            }
+            .fancybox-next {
+                right: -60px;
+            }
+            .fancybox-prev {
+                left: -60px;
+            }
+            
+        </style>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        
+        <script src="js/jquery.fancybox.js"></script>
+        <link rel="stylesheet" href="js/jquery.fancybox.css" type="text/css" media="screen" />
+    </head>
+    
+    <body>
+        <a rel="gallery" class="fancybox" href="/images/AboutUs1.jpg" title="Simone and Mike bringing their life long passion of cooking to light with the Sliders Food Truck">Learn More</a>
+        <a rel="gallery" class="fancybox" href="/images/AboutUs2.jpg"></a>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".fancybox").fancybox({
+                                        
+                    arrows: true,
+                    cyclic: true,
+                    openEffect: 'fade',
+                    closeEffect: 'fade',
+                    
+                    // close fancybox upon outside click
+                    afterShow: function () {
+                    fancyParent = $(".fancybox-wrap").parents(); 
+                    fancyParent.on("click", function () {
+                        $.fancybox.close();
+                    });
+                    $(".fancybox-wrap").on("click", function (event) {
+                        // prevents closing when clicking inside the fancybox wrap
+                        event.stopPropagation();
+                    });
+                    },
+                    afterClose: function () {
+                        fancyParent.unbind("click");
+                    }
+ 
+                });
+
+            });
+
+        </script>
+    
+    </body>
+
+</html>
